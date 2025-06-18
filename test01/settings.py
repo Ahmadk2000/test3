@@ -1,20 +1,19 @@
 from pathlib import Path
 import os
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+# المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# SECURITY WARNING: keep the secret key used in production!
+# مفتاح الأمان (غيّره في الإنتاج)
 SECRET_KEY = 'django-insecure-_293era6fk@kxu1#4_)$s6qr^aa8q%s!e)jxafk7&_u#$!jx*9'
 
-# SECURITY WARNING: don't run with debug turned on in production!
+# وضع التطوير
 DEBUG = True
 
+# قائمة النطاقات المسموحة
 ALLOWED_HOSTS = []
 
-
-# Application definition
+# التطبيقات المثبتة
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -22,13 +21,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    # Local apps
+
+    # التطبيقات الخاصة بالمشروع
     'accounts',
     'products',
     'orders',
 ]
 
+# الوسيطات (Middleware)
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -39,12 +39,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# مسار ملف URL الرئيسي
 ROOT_URLCONF = 'test01.urls'
 
+# إعدادات القوالب (templates)
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # مجلد القوالب العام
+        'DIRS': [BASE_DIR / 'templates'],  # هذا هو الربط الصحيح للمجلد
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -56,10 +58,10 @@ TEMPLATES = [
     },
 ]
 
+# تطبيق WSGI
 WSGI_APPLICATION = 'test01.wsgi.application'
 
-
-# Database
+# إعدادات قاعدة البيانات
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -67,46 +69,31 @@ DATABASES = {
     }
 }
 
-
-# Password validation
+# التحقق من كلمات المرور
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-
-# Internationalization
+# اللغة والتوقيت
 LANGUAGE_CODE = 'ar'
-
 TIME_ZONE = 'Asia/Riyadh'
-
 USE_I18N = True
 USE_TZ = True
 
-# لو لاحقاً حبيت تضيف ملفات ترجمة مخصصة
-LOCALE_PATHS = [
-    BASE_DIR / 'locale',
-]
+# مسارات ملفات الترجمة (اختياري)
+LOCALE_PATHS = [BASE_DIR / 'locale']
 
-
-# Static files (CSS, JavaScript, Images)
+# إعدادات الملفات الثابتة (CSS / JS / صور)
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # يُستخدم في الإنتاج
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Media files (لو احتجت رفع صور أو ملفات)
+# إعدادات رفع الملفات (صور أو مرفقات)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# Default primary key field type
+# نوع المفتاح الافتراضي للحقول الأساسية
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

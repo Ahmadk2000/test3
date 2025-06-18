@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الصفحة الرئيسية</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            direction: rtl;
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .site-header {
+            background-color: #1e1e2f;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-header .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: white;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .site-footer {
+            background-color: #eeeeee;
+            color: #444;
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    {% include 'header.html' %}
+
+    <main class="main-content">
+        <h1>مرحبًا بك في موقعنا العصري!</h1>
+        <p>استمتع بأفضل تجربة للمنتجات والخدمات الرقمية الحديثة.</p>
+    </main>
+
+    {% include 'footer.html' %}
+
+</body>
+</html>
