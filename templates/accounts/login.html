@@ -62,6 +62,12 @@
 
   <div class="auth-box">
     <h2>تسجيل الدخول</h2>
+  {% if not_found %}
+  <div style="background-color: #fdecea; color: #b71c1c; padding: 12px; border-radius: 6px; margin-bottom: 20px; font-size: 14px;">
+    المستخدم غير موجود. <a href="{% url 'register' %}" style="color: #b71c1c; text-decoration: underline;">إنشاء حساب جديد؟</a>
+  </div>
+{% endif %}
+
     <form method="post">
       {% csrf_token %}
       <input type="text" name="username" placeholder="اسم المستخدم" required>

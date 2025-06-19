@@ -30,6 +30,15 @@
       color: #2a2a72;
     }
 
+    .error-message {
+      background-color: #fdecea;
+      color: #b71c1c;
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
     input {
       width: 100%;
       padding: 12px;
@@ -62,6 +71,11 @@
 
   <div class="auth-box">
     <h2>إنشاء حساب جديد</h2>
+
+    {% if error %}
+      <div class="error-message">{{ error }}</div>
+    {% endif %}
+
     <form method="post">
       {% csrf_token %}
       <input type="text" name="username" placeholder="اسم المستخدم" required>
