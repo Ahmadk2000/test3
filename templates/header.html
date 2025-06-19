@@ -1,8 +1,14 @@
 <header style="background-color: #2a2a72; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center;">
   <div style="font-size: 24px; font-weight: bold;">تصاميم</div>
-  <nav>
-    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">الرئيسية</a>
-    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">خدماتنا</a>
-    <a href="#" style="color: white; margin: 0 10px; text-decoration: none;">تواصل معنا</a>
+
+  <nav style="display: flex; gap: 15px; align-items: center;">
+    <a href="/" style="color: white; text-decoration: none;">الرئيسية</a>
+    <a href="#" style="color: white; text-decoration: none;">خدماتنا</a>
+    <a href="#" style="color: white; text-decoration: none;">تواصل معنا</a>
   </nav>
+
+  <div style="display: flex; gap: 10px;">
+    <a href="{% url 'login' %}" style="padding: 8px 16px; background-color: white; color: #2a2a72; border-radius: 5px; text-decoration: none; font-weight: bold;">تسجيل الدخول</a>
+    <a href="{% url 'register' %}" style="padding: 8px 16px; background-color: #f9c846; color: #2a2a72; border-radius: 5px; text-decoration: none; font-weight: bold;">إنشاء حساب</a>
+  </div>
 </header>
