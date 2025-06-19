@@ -1,67 +1,130 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الصفحة الرئيسية</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تصاميم | الرئيسية</title>
 
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f8f9fa;
-            direction: rtl;
-        }
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: #f7f9fc;
+      color: #333;
+    }
 
-        .main-content {
-            text-align: center;
-            padding: 60px 20px;
-        }
+    main {
+      padding: 60px 20px;
+      text-align: center;
+    }
 
-        .site-header {
-            background-color: #1e1e2f;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    h1 {
+      color: #2a2a72;
+    }
 
-        .site-header .logo {
-            font-size: 24px;
-            font-weight: bold;
-        }
+    p {
+      font-size: 18px;
+    }
 
-        .nav-links a {
-            color: white;
-            margin: 0 10px;
-            text-decoration: none;
-        }
+    .service-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
 
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
+    .card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
 
-        .site-footer {
-            background-color: #eeeeee;
-            color: #444;
-            text-align: center;
-            padding: 20px;
-            border-top: 1px solid #ccc;
-        }
-    </style>
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+    }
+
+    .card-text {
+      padding: 15px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #2a2a72;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 40px;
+    }
+
+    button:hover {
+      background-color: #1c1c5c;
+    }
+
+    h2 {
+      color: #2a2a72;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
 
-    {% include 'header.html' %}
+  <!-- إدراج الهيدر -->
+  <div id="header-placeholder"></div>
 
-    <main class="main-content">
-        <h1>مرحبًا بك في موقعنا العصري!</h1>
-        <p>استمتع بأفضل تجربة للمنتجات والخدمات الرقمية الحديثة.</p>
-    </main>
+  <main>
+    <h1>أهلاً بك في تصاميم</h1>
+    <p>نقدم خدمات تصميم احترافية تناسب أعمالك وتبرز علامتك التجارية بأناقة وابتكار.</p>
 
-    {% include 'footer.html' %}
+    <button onclick="alert('تواصل معنا الآن')">اطلب تصميمك</button>
+
+    <section>
+      <h2>أعمالنا</h2>
+      <div class="service-cards">
+        
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250?text=تصميم+شعار" alt="تصميم شعار">
+          <div class="card-text">تصميم شعار احترافي</div>
+        </div>
+
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250?text=هوية+بصرية" alt="هوية بصرية">
+          <div class="card-text">الهوية البصرية الكاملة</div>
+        </div>
+
+        <div class="card">
+          <img src="https://via.placeholder.com/400x250?text=منشورات+سوشيال" alt="سوشيال ميديا">
+          <div class="card-text">تصميم منشورات سوشيال ميديا</div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- إدراج الفوتر -->
+  <div id="footer-placeholder"></div>
+
+  <script>
+    // تحميل الهيدر والفوتر من ملفات خارجية
+    async function loadPart(id, file) {
+      const res = await fetch(file);
+      const html = await res.text();
+      document.getElementById(id).innerHTML = html;
+    }
+
+    loadPart("header-placeholder", "header.html");
+    loadPart("footer-placeholder", "footer.html");
+  </script>
 
 </body>
 </html>
