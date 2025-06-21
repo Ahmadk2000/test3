@@ -1,5 +1,6 @@
 from pathlib import Path
 import os
+import cloudinary
 
 # المسار الأساسي للمشروع
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,7 +47,7 @@ ROOT_URLCONF = 'test01.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],  # هذا هو الربط الصحيح للمجلد
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,17 +84,24 @@ TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_TZ = True
 
-# مسارات ملفات الترجمة (اختياري)
+# مسارات ملفات الترجمة
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
-# إعدادات الملفات الثابتة (CSS / JS / صور)
+# الملفات الثابتة
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# إعدادات رفع الملفات (صور أو مرفقات)
+# رفع الملفات
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# نوع المفتاح الافتراضي للحقول الأساسية
+# إعداد Cloudinary
+cloudinary.config( 
+  cloud_name = 'deq8mpu9f', 
+  api_key = '272932535551661', 
+  api_secret = '7blVhj-xhH8MYv4_NXmi3RU4xF4' 
+)
+
+# نوع المفتاح الافتراضي
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
