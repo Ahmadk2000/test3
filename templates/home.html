@@ -55,6 +55,28 @@
     .card-text {
       padding: 15px;
       text-align: center;
+    }
+
+    .card-text h3 {
+      margin: 10px 0 5px;
+      font-size: 20px;
+      color: #2a2a72;
+    }
+
+    .card-text p {
+      margin: 0;
+      font-size: 16px;
+      color: #444;
+    }
+
+    .order-button {
+      display: inline-block;
+      margin-top: 10px;
+      background: #f9c846;
+      color: #2a2a72;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
       font-weight: bold;
     }
 
@@ -91,22 +113,20 @@
     <button onclick="alert('تواصل معنا الآن')">اطلب تصميمك</button>
 
     <section>
-      <h2>أعمالنا</h2>
+      <h2>منتجاتنا</h2>
       <div class="service-cards">
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250?text=تصميم+شعار" alt="تصميم شعار">
-          <div class="card-text">تصميم شعار احترافي</div>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250?text=هوية+بصرية" alt="هوية بصرية">
-          <div class="card-text">الهوية البصرية الكاملة</div>
-        </div>
-
-        <div class="card">
-          <img src="https://via.placeholder.com/400x250?text=منشورات+سوشيال" alt="سوشيال ميديا">
-          <div class="card-text">تصميم منشورات سوشيال ميديا</div>
-        </div>
+        {% for product in products %}
+          <div class="card">
+            <img src="{{ product.image.url }}" alt="{{ product.name }}">
+            <div class="card-text">
+              <h3>{{ product.name }}</h3>
+              <p>السعر: {{ product.price }} ريال</p>
+              <a href="#" class="order-button">اطلب الآن</a>
+            </div>
+          </div>
+        {% empty %}
+          <p>لا توجد منتجات متاحة حالياً.</p>
+        {% endfor %}
       </div>
     </section>
   </main>
