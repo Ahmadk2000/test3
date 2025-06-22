@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: django-app
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+    startCommand: gunicorn test01.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: test01.settings
+
+      - key: SECRET_KEY
+        value: your-very-secret-key-here  # ← غيّرها لمفتاح سري حقيقي وآمن
+
+      - key: DEBUG
+        value: "False"
+
+      - key: DATABASE_URL
+        fromDatabase:
+          name: mydb
+          property: connectionString
+
+      # إعداد Cloudinary
+      - key: CLOUDINARY_CLOUD_NAME
+        value: deq8mpu9f
+      - key: CLOUDINARY_API_KEY
+        value: 272932535551661
+      - key
