@@ -3,22 +3,25 @@ import os
 from dotenv import load_dotenv
 import cloudinary
 
-# تحميل متغيرات البيئة من ملف .env
+# تحميل متغيرات البيئة من ملف .env أو من إعدادات السيرفر (مثل Render)
 load_dotenv()
 
-# المسار الأساسي للمشروع
+# ============================
+# 📁 المسارات الأساسية
+# ============================
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# مفتاح الأمان
+# ============================
+# 🔐 الأمان والإعدادات العامة
+# ============================
 SECRET_KEY = os.getenv('SECRET_KEY', 'django-insecure-change-me')
-
-# وضع التطوير
 DEBUG = os.getenv('DEBUG', 'False') == 'True'
 
-# النطاقات المسموح بها
 ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',') if not DEBUG else []
 
-# التطبيقات المثبتة
+# ============================
+# 🧩 التطبيقات المثبتة
+# ============================
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -32,12 +35,14 @@ INSTALLED_APPS = [
     'products',
     'orders',
 
-    # Cloudinary
+    # دعم Cloudinary
     'cloudinary',
     'cloudinary_storage',
 ]
 
-# الوسيطات
+# ============================
+# ⚙️ الوسيطات
+# ============================
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',  # لدعم static على Render
@@ -49,10 +54,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-# إعدادات الروابط
+# ============================
+# 🔗 إعدادات الروابط
+# ============================
 ROOT_URLCONF = 'test01.urls'
 
-# إعدادات القوالب
+# ============================
+# 🧱 إعدادات القوالب
+# ============================
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -68,10 +77,11 @@ TEMPLATES = [
     },
 ]
 
-# WSGI
 WSGI_APPLICATION = 'test01.wsgi.application'
 
-# إعداد قاعدة البيانات (PostgreSQL أو SQLite حسب البيئة)
+# ============================
+# 🗃️ إعدادات قاعدة البيانات
+# ============================
 if os.getenv('USE_SQLITE', 'False') == 'True':
     DATABASES = {
         'default': {
@@ -91,7 +101,9 @@ else:
         }
     }
 
-# تحقق من كلمات المرور
+# ============================
+# 🔐 التحقق من كلمات المرور
+# ============================
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -99,33 +111,38 @@ AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
-# اللغة والتوقيت
+# ============================
+# 🌍 اللغة والتوقيت
+# ============================
 LANGUAGE_CODE = 'ar'
 TIME_ZONE = 'Asia/Riyadh'
 USE_I18N = True
 USE_TZ = True
 
-# المسارات للترجمة
 LOCALE_PATHS = [BASE_DIR / 'locale']
 
-# إعدادات الملفات الثابتة
+# ============================
+# 📦 الملفات الثابتة والميديا
+# ============================
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / 'static']
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# إعدادات الوسائط
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-# إعداد Cloudinary
+# ============================
+# ☁️ Cloudinary إعدادات
+# ============================
 cloudinary.config(
     cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
     api_key=os.getenv('CLOUDINARY_API_KEY'),
     api_secret=os.getenv('CLOUDINARY_API_SECRET')
 )
 
-# استخدام Cloudinary كخدمة تخزين للوسائط
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-# نوع الحقل الافتراضي للمفاتيح الأساسية
+# ============================
+# 🧩 إعداد المفتاح الافتراضي للموديلات
+# ============================
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
